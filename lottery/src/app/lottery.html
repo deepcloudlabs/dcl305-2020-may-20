@@ -1,0 +1,45 @@
+<div>
+  <div class="container" role="main">
+    <div class="card">
+      <div class="card-header">
+        <h3>Lottery</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="column">Column</label>
+          <input id="column"
+                 [(ngModel)]="column"
+                 class="form-control" type="number" min="1" max="10">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success"
+                  (click)="draw()">Draw
+          </button>
+          <button (click)="reset()"
+                  class="btn btn-warning">Reset
+          </button>
+        </div>
+      </div>
+    </div>
+    <p></p>
+    <div *ngIf="numbers.length > 0" class="card">
+      <div class="card-header">
+        <h3>Lottery Numbers</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped table-responsive table-hover">
+          <thead>
+          <tr>
+            <th *ngFor="let i of [1,2,3,4,5,6]">Number #{{i}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let rows of numbers">
+            <td *ngFor="let number of rows">{{number}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
