@@ -30,6 +30,14 @@ export class AppComponent implements OnInit {
     );
   }
 
+  get totalSalary() : number { // computed!
+    return this.employees.map(emp => emp.salary).reduce((sum,salary)=>sum+salary,0);
+  }
+
+  get averageSalary() : number {
+    return this.totalSalary / this.employees.length;
+  }
+
   addEmployee() {
     this.employeeService.hireEmployee(this.employee)
       .subscribe(emp => {
