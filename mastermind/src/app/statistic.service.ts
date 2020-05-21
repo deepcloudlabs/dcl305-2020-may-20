@@ -12,7 +12,8 @@ export class StatisticService {
     if (stats == null) {
       localStorage.setItem("statistics", JSON.stringify(this._statistics));
     } else {
-      this._statistics = JSON.parse(stats);
+      let o = JSON.parse(stats);
+      this._statistics = new GameStatistics(o.wins,o.loses,o.total);
     }
   }
 
