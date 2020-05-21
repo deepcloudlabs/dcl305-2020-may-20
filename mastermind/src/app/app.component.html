@@ -1,0 +1,65 @@
+<p></p>
+<div class="container" role="main">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title"></h3>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="gameLevel">Game Level: <span class="badge badge-info" id="gameLevel">3</span></label>
+      </div>
+      <div class="form-group">
+        <label for="tries">Tries: <span class="badge badge-info" id="tries">0</span></label>
+      </div>
+      <div class="form-group">
+        <label for="guess">Guess:</label>
+        <input class="form-control" type="number" id="guess"/>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success">Play</button>
+      </div>
+    </div>
+  </div>
+  <p></p>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Moves</h3>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover table-bordered table-striped table-responsive">
+        <thead>
+        <tr>
+          <th>No</th>
+          <th>Guess</th>
+          <th>Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>123</td>
+          <td>-1+1</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p></p>
+
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Game Statistics</h3>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="wins">Wins:  <span class="badge badge-success" id="wins">1</span> of <span class="badge badge-info">2</span></label>
+      </div>
+      <div class="form-group">
+        <label for="wins">Loses:  <span class="badge badge-danger" id="loses">1</span> of <span class="badge badge-info">2</span></label>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>

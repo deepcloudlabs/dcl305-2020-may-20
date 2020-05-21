@@ -27,18 +27,7 @@
         <h3>Lottery Numbers</h3>
       </div>
       <div class="card-body">
-        <table class="table table-bordered table-striped table-responsive table-hover">
-          <thead>
-          <tr>
-            <th *ngFor="let i of [1,2,3,4,5,6]">Number #{{i}}</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let rows of numbers">
-            <td *ngFor="let number of rows">{{number}}</td>
-          </tr>
-          </tbody>
-        </table>
+         <app-lottery-table [array]="numbers" [ranges]="index"></app-lottery-table>
       </div>
     </div>
   </div>
