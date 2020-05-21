@@ -6,7 +6,7 @@ import {Employee} from "../model/Employee";
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeeService {
+export class EmployeeService { // Integration Service -> hr-backend
   private readonly baseURL: string = "http://localhost:4001/employees";
 
   constructor(private httpClient: HttpClient) {

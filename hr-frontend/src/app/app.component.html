@@ -12,31 +12,38 @@
       <div class="form-group">
         <label for="identityNo">Identity No</label>
         <input type="text" id="identityNo"
+               [(ngModel)]="employee.identityNo"
                class="form-control">
       </div>
       <div class="form-group">
         <label for="fullName">Fullname</label>
         <input type="text" id="fullName"
+               [(ngModel)]="employee.fullname"
                class="form-control">
       </div>
       <div class="form-group">
         <label for="salary">Salary</label>
         <input type="text" id="salary"
+               [(ngModel)]="employee.salary"
                class="form-control">
       </div>
       <div class="form-group">
         <label for="birthYear">Birth Year</label>
         <input type="text" id="birthYear"
+               [(ngModel)]="employee.birthYear"
                class="form-control">
       </div>
       <div class="form-group">
         <label for="iban">IBAN</label>
         <input type="text" id="iban"
+               [(ngModel)]="employee.iban"
                class="form-control">
       </div>
       <div class="form-group">
         <label for="department">Department</label>
-        <select id="department" class="form-control">
+        <select id="department"
+                [(ngModel)]="employee.department"
+                class="form-control">
           <option>IT</option>
           <option>Finance</option>
           <option>Sales</option>
@@ -45,7 +52,9 @@
       </div>
       <div class="form-group">
         <label for="photo">Photo</label>
-        <img id="photoImage" style="width: 64px; height: 64px;">
+        <img id="photoImage"
+             [src]="employee.photo"
+             style="width: 64px; height: 64px;">
         <label class="btn btn-info btn-file">
           <input type="file" id="photo" style="display: none;">
           <span>Browse</span>
