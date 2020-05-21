@@ -69,11 +69,22 @@ export class AppComponent implements OnInit {
       .subscribe(employees => this.employees = employees);
   }
 
-  loadPhoto(evt: Event) {
+  loadPhoto(evt: any) {
     let reader : FileReader = new FileReader();
     reader.onload = (e) => {
       this.employee.photo = reader.result as string;
     }
     reader.readAsDataURL(evt.target.files[0]);
+  }
+
+  deleteEmployee(emp: Employee) {
+    this.employeeService.fireEmpByIdentity(emp.identityNo)
+      .subscribe(emp => {
+        for (let prop in emp) {
+          if (this.employee.hasOwnProperty(prop))
+            this.employee[prop] = emp[prop];
+        }
+        this.employees = this.employees.filter(e => e.identityNo!=emp.identityNo);
+      })
   }
 }

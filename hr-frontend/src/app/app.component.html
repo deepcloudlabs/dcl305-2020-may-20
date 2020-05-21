@@ -106,7 +106,7 @@
           <td>{{emp.department}}</td>
           <td>{{emp.birthYear}}</td>
           <td>
-            <button class="btn btn-danger">Delete</button>
+            <button (click)="deleteEmployee(emp)" class="btn btn-danger">Delete</button>
           </td>
         </tr>
         <tr>
