@@ -33,28 +33,47 @@ export class AppComponent implements OnInit {
   addEmployee() {
     this.employeeService.hireEmployee(this.employee)
       .subscribe(emp => {
-          console.log("Employee is hired!");
+        console.log("Employee is hired!");
       })
   }
 
   updateEmployee() {
     this.employeeService.updateEmployee(this.employee)
       .subscribe(emp => {
-          console.log("Employee is updated!");
+        console.log("Employee is updated!");
       })
   }
+
   findEmployee() {
-     this.employeeService.findEmpByIdentity(this.employee.identityNo)
-       .subscribe( emp => {
-           for( let prop in emp){
-             if (this.employee.hasOwnProperty(prop))
-                this.employee[prop] = emp[prop];
-           }
-       })
+    this.employeeService.findEmpByIdentity(this.employee.identityNo)
+      .subscribe(emp => {
+        for (let prop in emp) {
+          if (this.employee.hasOwnProperty(prop))
+            this.employee[prop] = emp[prop];
+        }
+      })
+  }
+
+  removeEmployee() {
+    this.employeeService.fireEmpByIdentity(this.employee.identityNo)
+      .subscribe(emp => {
+        for (let prop in emp) {
+          if (this.employee.hasOwnProperty(prop))
+            this.employee[prop] = emp[prop];
+        }
+      })
   }
 
   findAllEmployees() {
     this.employeeService.findAllEmployees()
-                         .subscribe(employees => this.employees = employees);
+      .subscribe(employees => this.employees = employees);
+  }
+
+  loadPhoto(evt: Event) {
+    let reader : FileReader = new FileReader();
+    reader.onload = (e) => {
+      this.employee.photo = reader.result as string;
+    }
+    reader.readAsDataURL(evt.target.files[0]);
   }
 }
