@@ -11,6 +11,7 @@ import {EmployeeService} from "./employee.service";
 export class AppComponent implements OnInit {
   title = 'hr-frontend';
   employee: Employee;
+  employees: Array<Employee>;
 
   constructor(private employeeService: EmployeeService) {
     // dependency injection
@@ -27,5 +28,33 @@ export class AppComponent implements OnInit {
       "IT",
       true
     );
+  }
+
+  addEmployee() {
+    this.employeeService.hireEmployee(this.employee)
+      .subscribe(emp => {
+          console.log("Employee is hired!");
+      })
+  }
+
+  updateEmployee() {
+    this.employeeService.updateEmployee(this.employee)
+      .subscribe(emp => {
+          console.log("Employee is updated!");
+      })
+  }
+  findEmployee() {
+     this.employeeService.findEmpByIdentity(this.employee.identityNo)
+       .subscribe( emp => {
+           for( let prop in emp){
+             if (this.employee.hasOwnProperty(prop))
+                this.employee[prop] = emp[prop];
+           }
+       })
+  }
+
+  findAllEmployees() {
+    this.employeeService.findAllEmployees()
+                         .subscribe(employees => this.employees = employees);
   }
 }
