@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Game} from "../model/GameModel";
 import {Move} from "../model/Move";
 import {GameStatistics} from "../model/GameStatistics";
+import {StatisticService} from "./statistic.service";
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,15 @@ import {GameStatistics} from "../model/GameStatistics";
 export class AppComponent implements OnInit {
   title = 'mastermind';
   game: Game = new Game();
-  statistics: GameStatistics = new GameStatistics(0, 0, 0);
+  // statistics: GameStatistics = new GameStatistics(0, 0, 0);
   private secret: number;
 
-  constructor() {
+   // Dependency Injection
+  constructor(private statService : StatisticService) {
+  }
+
+  get statistics() : GameStatistics {
+    return this.statService.statistics;
   }
 
   ngOnInit(): void {
@@ -26,12 +32,12 @@ export class AppComponent implements OnInit {
     this.game.tries++;
     if (this.game.guess == this.secret) {
       this.game.gameLevel++;
-      this.statistics.incrementWins();
+      this.statService.playerWins();
       this.secret = this.createSecret(this.game.gameLevel);
       this.game.reset();
     } else {
       if (this.game.tries > 10) {
-        this.statistics.incrementLoses();
+        this.statService.playerLoses();
         this.secret = this.createSecret(this.game.gameLevel);
         this.game.reset();
       } else {
