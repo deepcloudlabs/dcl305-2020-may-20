@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Game} from "../model/GameModel";
+import {Move} from "../model/Move";
 import {GameStatistics} from "../model/GameStatistics";
 
 @Component({
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.secret = this.createSecret(this.game.gameLevel);
+    console.log(this.secret);
   }
 
   public play() {
