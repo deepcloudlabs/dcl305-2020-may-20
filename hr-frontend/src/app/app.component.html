@@ -96,12 +96,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let emp of employees; let i = index">
+        <tr *ngFor="let emp of employees; let i = index" (click)="copyEmployee(emp)">
           <td>{{i+1}}</td>
           <td><img [src]="emp.photo" style="width: 32px; height: 32px; border-radius: 16px;"></td>
           <td>{{emp.identityNo}}</td>
           <td>{{emp.fullname}}</td>
-          <td>{{emp.salary}}</td>
+          <td>{{emp.salary | currency: '\u20ba'}}</td>
           <td>{{emp.iban}}</td>
           <td>{{emp.department}}</td>
           <td>{{emp.birthYear}}</td>
@@ -112,12 +112,12 @@
         <tr>
           <td colspan="3"></td>
           <td>Total Salary</td>
-          <td colspan="5">{{totalSalary}}</td>
+          <td colspan="5">{{totalSalary | currency: '\u20ba'}}</td>
         </tr>
         <tr>
           <td colspan="3"></td>
           <td>Average Salary</td>
-          <td colspan="5">{{averageSalary}}</td>
+          <td colspan="5">{{averageSalary | currency: '\u20ba'}}</td>
         </tr>
         </tbody>
       </table>

@@ -31,10 +31,12 @@ export class AppComponent implements OnInit {
   }
 
   get totalSalary() : number { // computed!
+    if (this.employees==null) return NaN;
     return this.employees.map(emp => emp.salary).reduce((sum,salary)=>sum+salary,0);
   }
 
   get averageSalary() : number {
+    if (this.employees==null) return NaN;
     return this.totalSalary / this.employees.length;
   }
 
@@ -94,5 +96,9 @@ export class AppComponent implements OnInit {
         }
         this.employees = this.employees.filter(e => e.identityNo!=emp.identityNo);
       })
+  }
+
+  copyEmployee(emp: Employee) {
+    this.employee = emp;
   }
 }
