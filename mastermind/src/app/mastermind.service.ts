@@ -17,6 +17,15 @@ export class MastermindService {
     } else {
       this._game.gameLevel = JSON.parse(mastermind).gameLevel;
     }
+    setInterval(() => this.countDown(), 1000);
+  }
+
+  countDown() {
+    this._game.counter--;
+    if (this._game.counter <= 0) {
+      this.statService.playerLoses();
+      this.initGame();
+    }
   }
 
   get game(): Game {
