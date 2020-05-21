@@ -43,9 +43,8 @@ export class MastermindService {
     this._game.tries++;
     if (this._game.guess == this.secret) {
       this._game.gameLevel++;
-      this.statService.playerWins();
+      this.statService.playerWins(this._game.tries,this._game.counter);
       this.initGame();
-
     } else {
       if (this._game.tries > 10) {
         this.statService.playerLoses();

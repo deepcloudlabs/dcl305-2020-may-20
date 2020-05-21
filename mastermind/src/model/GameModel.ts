@@ -14,6 +14,6 @@ export class Game {
   reset() {
     this.tries = 0;
     this.moves = [];
-    this.counter = 10;
+    this.counter = 100;
   }
 }
