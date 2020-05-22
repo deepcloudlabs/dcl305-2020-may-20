@@ -1,9 +1,9 @@
 export class GameStatistics {
-  constructor(public wins: number,
-              public loses: number,
-              public total: number,
-              public averageWinTime : number,
-              public averageMove : number) {
+  constructor(public wins: number = 0,
+              public loses: number = 0,
+              public total: number = 0,
+              public averageWinTime : number = 0,
+              public averageMove : number = 0) {
   }
 
   incrementWins() {

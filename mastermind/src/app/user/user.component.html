@@ -1,0 +1,50 @@
+<p></p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Top Users</h4>
+    </div>
+    <div class="card-body">
+       <table class="table table-bordered table-hover table-striped table-responsive">
+         <thead>
+          <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Nickname</th>
+            <th>email</th>
+            <th>Total Game</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr *ngFor="let usr of users">
+            <td>{{usr.id}}</td>
+            <td><a routerLink="/users/{{usr.id}}">{{usr.fullname}}</a></td>
+            <td>{{usr.nickname}}</td>
+            <td>{{usr.email}}</td>
+            <td>{{usr.statistics.total}}</td>
+          </tr>
+         </tbody>
+       </table>
+    </div>
+  </div>
+  <p></p>
+  <div *ngIf="id" class="card">
+    <div class="card-header">
+      <h4 class="card-title">User ({{user.fullname}}, {{user.email}})</h4>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+          <label for="wins">Wins:  <span class="badge badge-success" id="wins">{{user.statistics.wins}}</span> of <span class="badge badge-info">{{user.statistics.total}}</span></label>
+        </div>
+        <div class="form-group">
+          <label for="wins">Loses:  <span class="badge badge-danger" id="loses">{{user.statistics.loses}}</span> of <span class="badge badge-info">{{user.statistics.total}}</span></label>
+        </div>
+        <div class="form-group">
+          <label for="averageMove">Average # of Moves:  <span class="badge badge-success" id="averageMove">{{user.statistics.averageMove}}</span></label>
+        </div>
+        <div class="form-group">
+          <label for="averageWinTime">Average Win Time:  <span class="badge badge-danger" id="averageWinTime">{{user.statistics.averageWinTime}}</span> sec.</label>
+        </div>
+    </div>
+  </div>
+</div>

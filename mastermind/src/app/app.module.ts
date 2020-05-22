@@ -11,6 +11,7 @@ import { MinusPipe } from './minus.pipe';
 import { PlusPipe } from './pipes/plus.pipe';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StatisticsComponent } from './statistics/statistics.component';
     MinusPipe,
     PlusPipe,
     LandingpageComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
