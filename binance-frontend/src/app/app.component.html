@@ -1,0 +1,32 @@
+<div style="width: 640px; height: 480px;">
+  <div>
+     <canvas baseChart
+             width="640"
+             height="480"
+             [datasets]="market.tradesChartData"
+             [labels]="market.tradesChartLabels"
+             [options]="chartOptions"
+             [legend]="'true'"
+             [chartType]="'line'"
+     >
+     </canvas>
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let trade of market.trades">
+      <td>{{trade.symbol}}</td>
+      <td>{{trade.price}}</td>
+      <td>{{trade.quantity}}</td>
+      <td>{{trade.timestamp}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<router-outlet></router-outlet>
