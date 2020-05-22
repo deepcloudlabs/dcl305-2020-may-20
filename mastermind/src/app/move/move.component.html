@@ -1,4 +1,4 @@
-<span *ngIf="move.partialMatch>0" class="badge badge-danger">{{move.partialMatch}}</span>
-<span *ngIf="move.perfectMatch>0" class="badge badge-success">{{move.perfectMatch}}</span>
+<span *ngIf="move.partialMatch>0" class="badge badge-danger">{{move.partialMatch | minus }}</span>
+<span *ngIf="move.perfectMatch>0" class="badge badge-success">{{move.perfectMatch | plus }}</span>
 <span *ngIf="move.perfectMatch==0 && move.partialMatch==0"
       class="badge badge-info">No Match</span>

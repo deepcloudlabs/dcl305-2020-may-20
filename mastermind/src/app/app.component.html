@@ -40,8 +40,8 @@
         </thead>
         <tbody>
         <tr *ngFor="let move of game.moves; let i = index">
-          <td>{{i+1}}</td>
-          <td>{{move.guess}}</td>
+          <td>{{i+1 | plus}}</td>
+          <td>{{move.guess | plus}}</td>
           <td><move [value]="move"></move></td>
         </tr>
         </tbody>
@@ -50,25 +50,7 @@
   </div>
   <p></p>
 
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Game Statistics</h3>
-    </div>
-    <div class="card-body">
-      <div class="form-group">
-        <label for="wins">Wins:  <span class="badge badge-success" id="wins">{{statistics.wins}}</span> of <span class="badge badge-info">{{statistics.total}}</span></label>
-      </div>
-      <div class="form-group">
-        <label for="wins">Loses:  <span class="badge badge-danger" id="loses">{{statistics.loses}}</span> of <span class="badge badge-info">{{statistics.total}}</span></label>
-      </div>
-      <div class="form-group">
-        <label for="averageMove">Average # of Moves:  <span class="badge badge-success" id="averageMove">{{statistics.averageMove}}</span></label>
-      </div>
-      <div class="form-group">
-        <label for="averageWinTime">Average Win Time:  <span class="badge badge-danger" id="averageWinTime">{{statistics.averageWinTime}}</span> sec.</label>
-      </div>
-    </div>
-  </div>
+
 
 </div>
 

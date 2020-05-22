@@ -7,12 +7,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
 import { MoveComponent } from './move/move.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
+import { MinusPipe } from './minus.pipe';
+import { PlusPipe } from './pipes/plus.pipe';
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoveComponent,
-    ProgressbarComponent
+    ProgressbarComponent,
+    MinusPipe,
+    PlusPipe,
+    LandingpageComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +29,6 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [LandingpageComponent]
 })
 export class AppModule { }
