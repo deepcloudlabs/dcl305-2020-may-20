@@ -41,7 +41,7 @@
         <tr *ngFor="let move of game.moves; let i = index">
           <td>{{i+1}}</td>
           <td>{{move.guess}}</td>
-          <td>{{move.message}}</td>
+          <td><move [value]="move"></move></td>
         </tr>
         </tbody>
       </table>

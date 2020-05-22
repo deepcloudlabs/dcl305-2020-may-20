@@ -43,15 +43,14 @@ export class MastermindService {
     this._game.tries++;
     if (this._game.guess == this.secret) {
       this._game.gameLevel++;
-      this.statService.playerWins(this._game.tries,this._game.counter);
+      this.statService.playerWins(this._game.tries, this._game.counter);
       this.initGame();
     } else {
       if (this._game.tries > 10) {
         this.statService.playerLoses();
         this.initGame();
       } else {
-        let message: string = this.createMessage(this._game.guess, this.secret);
-        this._game.moves.push(new Move(this._game.guess, message));
+        this._game.moves.push(this.createMove(this._game.guess, this.secret));
       }
     }
   }
@@ -76,7 +75,7 @@ export class MastermindService {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  private createMessage(guess: number, secret: number): string {
+  private createMove(guess: number, secret: number): Move {
     const strSecret: string = secret.toString();
     const strGuess: string = guess.toString();
     let perfectMatch: number = 0; // +
@@ -91,10 +90,13 @@ export class MastermindService {
         }
       }
     }
-    if (perfectMatch == 0 && partialMatch == 0) return "No match!";
     let message: string = "";
-    if (partialMatch > 0) message += "-" + partialMatch;
-    if (perfectMatch > 0) message += "+" + perfectMatch;
-    return message;
+    if (partialMatch == 0 && perfectMatch == 0) {
+      message = "No match!";
+    } else {
+      if (partialMatch > 0) message += "-" + partialMatch;
+      if (perfectMatch > 0) message += "+" + perfectMatch;
+    }
+    return new Move(guess, message, perfectMatch, partialMatch);
   }
 }
