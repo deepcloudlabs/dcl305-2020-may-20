@@ -12,7 +12,8 @@
         <label for="tries">Tries: <span class="badge badge-info" id="tries">{{game.tries}}</span></label>
       </div>
       <div class="form-group">
-        <label for="counter">Counter: <span class="badge badge-info" id="counter">{{game.counter}}</span></label>
+        <label for="counter">Counter:</label>
+        <progressbar id="counter" [value]="game.counter" max="100"></progressbar>
       </div>
       <div class="form-group">
         <label for="guess">Guess:</label>

@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
 import { MoveComponent } from './move/move.component';
+import { ProgressbarComponent } from './progressbar/progressbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoveComponent
+    MoveComponent,
+    ProgressbarComponent
   ],
   imports: [
     BrowserModule,
