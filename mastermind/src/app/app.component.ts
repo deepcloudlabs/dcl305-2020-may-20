@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Game} from "../model/GameModel";
 import {Move} from "../model/Move";
 import {GameStatistics} from "../model/GameStatistics";
 import {StatisticService} from "./statistic.service";
 import {MastermindService} from "./mastermind.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-root',

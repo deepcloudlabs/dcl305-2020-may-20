@@ -25,6 +25,7 @@
                  required
                  range
                  distinct="true"
+                 [repeated]="game.history"
                  [digits]="game.gameLevel"
                  [(ngModel)]="game.guess"
                  #guess="ngModel"
@@ -33,6 +34,7 @@
             <div *ngIf="guess.errors.required">Guess is required!</div>
             <div *ngIf="guess.errors.distinct">Digits are not unique!</div>
             <div *ngIf="guess.errors.digits">Digits are different than game level {{game.gameLevel}}!</div>
+            <div *ngIf="guess.errors.repeated">You have already used {{guess.value}}!</div>
           </div>
         </div>
         <div class="form-group">
