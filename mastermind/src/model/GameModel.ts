@@ -5,9 +5,10 @@ export class Game {
   guess : number = 123 ;
   gameLevel : number = 3;
   moves : Array<Move> ;
-  counter : number = 10;
+  counter : number = 100;
 
   constructor() {
+    console.log("Game mode is created!"+JSON.stringify(this));
     this.moves = Array.from([]);
   }
 

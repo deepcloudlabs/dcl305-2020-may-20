@@ -5,23 +5,40 @@
       <h3 class="card-title">{{title}}</h3>
     </div>
     <div class="card-body">
-      <div class="form-group">
-        <label for="gameLevel">Game Level: <span class="badge badge-info" id="gameLevel">{{game.gameLevel}}</span></label>
-      </div>
-      <div class="form-group">
-        <label for="tries">Tries: <span class="badge badge-info" id="tries">{{game.tries}}</span></label>
-      </div>
-      <div class="form-group">
-        <label for="counter">Counter:</label>
-        <progressbar id="counter" [value]="game.counter" max="100"></progressbar>
-      </div>
-      <div class="form-group">
-        <label for="guess">Guess:</label>
-        <input class="form-control" [(ngModel)]="game.guess" type="number" id="guess"/>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-success" (click)="play()">Play</button>
-      </div>
+      <form #gameForm="ngForm">
+        <div class="form-group">
+          <label for="gameLevel">Game Level: <span class="badge badge-info"
+                                                   id="gameLevel">{{game.gameLevel}}</span></label>
+        </div>
+        <div class="form-group">
+          <label for="tries">Tries: <span class="badge badge-info" id="tries">{{game.tries}}</span></label>
+        </div>
+        <div class="form-group">
+          <label for="counter">Counter:</label>
+          <progressbar id="counter" [value]="game.counter" max="100"></progressbar>
+        </div>
+        <div class="form-group">
+          <label for="guess">Guess:</label>
+          <input id="guess"
+                 class="form-control"
+                 name="guess"
+                 required
+                 range
+                 distinct="true"
+                 [digits]="game.gameLevel"
+                 [(ngModel)]="game.guess"
+                 #guess="ngModel"
+                 type="number"/>
+          <div class="alert alert-danger" *ngIf="guess.invalid && (guess.dirty || guess.touched)">
+            <div *ngIf="guess.errors.required">Guess is required!</div>
+            <div *ngIf="guess.errors.distinct">Digits are not unique!</div>
+            <div *ngIf="guess.errors.digits">Digits are different than game level {{game.gameLevel}}!</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="gameForm.invalid" class="btn btn-success" (click)="play()">Play</button>
+        </div>
+      </form>
     </div>
   </div>
   <p></p>
@@ -40,16 +57,17 @@
         </thead>
         <tbody>
         <tr *ngFor="let move of game.moves; let i = index">
-          <td>{{i+1 | plus}}</td>
-          <td>{{move.guess | plus}}</td>
-          <td><move [value]="move"></move></td>
+          <td>{{i + 1}}</td>
+          <td>{{move.guess}}</td>
+          <td>
+            <move [value]="move"></move>
+          </td>
         </tr>
         </tbody>
       </table>
     </div>
   </div>
   <p></p>
-
 
 
 </div>

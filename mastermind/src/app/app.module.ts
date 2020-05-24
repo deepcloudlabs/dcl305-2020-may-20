@@ -12,6 +12,8 @@ import { PlusPipe } from './pipes/plus.pipe';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { UserComponent } from './user/user.component';
+import { RangeDirective } from './range.directive';
+import { DigitDirective } from './digit.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { UserComponent } from './user/user.component';
     PlusPipe,
     LandingpageComponent,
     StatisticsComponent,
-    UserComponent
+    UserComponent,
+    RangeDirective,
+    DigitDirective
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import {MastermindService} from "./mastermind.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'mastermind';
+  title = 'Mastermind';
 
   // Dependency Injection
   constructor(private statService: StatisticService,
@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mastermindService.initGame();
   }
 
   get game(): Game {

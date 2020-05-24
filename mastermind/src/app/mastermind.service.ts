@@ -11,12 +11,14 @@ export class MastermindService {
   private secret: number;
 
   constructor(private statService: StatisticService) {
+    console.log("MastermindService is created!")
     let mastermind = localStorage.getItem("mastermind");
     if (mastermind == null) {
       localStorage.setItem("mastermind", JSON.stringify({gameLevel: this._game.gameLevel}));
     } else {
       this._game.gameLevel = JSON.parse(mastermind).gameLevel;
     }
+    this.initGame();
     setInterval(() => this.countDown(), 1000);
   }
 
