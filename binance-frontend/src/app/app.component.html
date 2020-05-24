@@ -1,32 +1,53 @@
-<div style="width: 640px; height: 480px;">
-  <div>
-     <canvas baseChart
-             width="640"
-             height="480"
-             [datasets]="market.tradesChartData"
-             [labels]="market.tradesChartLabels"
-             [options]="chartOptions"
-             [legend]="'true'"
-             [chartType]="'line'"
-     >
-     </canvas>
-<table>
-  <thead>
-    <tr>
-      <th>Symbol</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Timestamp</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let trade of market.trades">
-      <td>{{trade.symbol}}</td>
-      <td>{{trade.price}}</td>
-      <td>{{trade.quantity}}</td>
-      <td>{{trade.timestamp}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container container-lg" role="main">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title">Market Chart</h1>
+    </div>
+    <div class="card-body">
+      <div>
+        <canvas baseChart
+                width="720"
+                height="480"
+                [datasets]="market.tradesChartData"
+                [labels]="market.tradesChartLabels"
+                [options]="chartOptions"
+                [legend]="'true'"
+                [chartType]="'line'">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title">Market Data</h1>
+    </div>
+    <div class="card-body">
+      <div>
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+          <tr>
+            <th>No</th>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Timestamp</th>
+            <th>Date/Time</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let trade of market.trades; let i = index" [ngClass]="trade.quantity > 1 ? 'bg-danger' : ''">
+            <td>{{i+1}}</td>
+            <td>{{trade.symbol}}</td>
+            <td>{{trade.price}}</td>
+            <td>{{trade.quantity}}</td>
+            <td>{{trade.timestamp}}</td>
+            <td>{{trade.datetime}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
