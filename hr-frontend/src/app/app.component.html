@@ -46,8 +46,15 @@
           <input type="text" id="salary"
                  name="salary"
                  #salary="ngModel"
+                 required
+                 number
+                 min="3000"
                  [(ngModel)]="employee.salary"
                  class="form-control">
+          <div class="alert alert-danger" *ngIf="salary.invalid && (salary.dirty || salary.touched)">
+            <div *ngIf="salary.errors.required">Salary is required!</div>
+            <div *ngIf="salary.errors.min">Minimum salary is 3000!</div>
+          </div>
         </div>
         <div class="form-group">
           <label for="birthYear">Birth Year</label>
@@ -55,8 +62,16 @@
                  name="birthYear"
                  #birthYear="ngModel"
                  required
+                 number
+                 min="1950"
+                 max="2004"
                  [(ngModel)]="employee.birthYear"
                  class="form-control">
+          <div class="alert alert-danger" *ngIf="birthYear.invalid && (birthYear.dirty || birthYear.touched)">
+            <div *ngIf="birthYear.errors.required">Birth year is required!</div>
+            <div *ngIf="birthYear.errors.min">Minimum birth year is 1950!</div>
+            <div *ngIf="birthYear.errors.max">Maximum birth year is 2004!</div>
+          </div>
         </div>
         <div class="form-group">
           <label for="iban">IBAN</label>
@@ -64,8 +79,13 @@
                  name="iban"
                  #iban="ngModel"
                  required
+                 iban
                  [(ngModel)]="employee.iban"
                  class="form-control">
+          <div class="alert alert-danger" *ngIf="iban.invalid && (iban.dirty || iban.touched)">
+            <div *ngIf="iban.errors.required">Iban is required!</div>
+            <div *ngIf="iban.errors.iban">This is not a valid iban!</div>
+          </div>
         </div>
         <div class="form-group">
           <label for="department">Department</label>

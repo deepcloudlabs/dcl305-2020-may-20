@@ -7,11 +7,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { TckimliknoDirective } from './tckimlikno.directive';
+import { IbanDirective } from './iban.directive';
+import {NumberDirective} from "./number.directive";
 
 @NgModule({
   declarations: [
     AppComponent,
-    TckimliknoDirective
+    TckimliknoDirective,
+    IbanDirective,
+    NumberDirective
   ],
   imports: [
     BrowserModule,
