@@ -4,14 +4,14 @@ import {Move} from "../model/Move";
 import {GameStatistics} from "../model/GameStatistics";
 import {StatisticService} from "./statistic.service";
 import {MastermindService} from "./mastermind.service";
-import {NgForm} from "@angular/forms";
+import {AbstractControl, NgForm, NgModel} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Mastermind';
 
   // Dependency Injection
@@ -23,14 +23,13 @@ export class AppComponent implements OnInit {
     return this.statService.statistics;
   }
 
-  ngOnInit(): void {
-  }
-
   get game(): Game {
     return this.mastermindService.game;
   }
 
-  play() {
-    this.mastermindService.play();
+  play(guess : NgModel) {
+    guess.control.updateValueAndValidity();
+    if (guess.valid)
+        this.mastermindService.play();
   }
 }
